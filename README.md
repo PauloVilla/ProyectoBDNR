@@ -1,7 +1,7 @@
 # ProyectoBDNR
 En este repositorio se encuentra el desarrollo del proyecto de la clase de bases de datos no relacionales
 
-### Setup a python virtual env with python cassandra installed
+### Setup a python virtual env with python pymongo installed
 ```
 # If pip is not present in you system
 sudo apt update
