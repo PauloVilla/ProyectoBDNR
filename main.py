@@ -25,6 +25,7 @@ def startup_db_client():
     travel_collection.create_index([("from_airport", 1)])
     travel_collection.create_index([("to_airport", 1)])
     travel_collection.create_index([("month", 1)])
+    print("Con")
 
     # Mostramos que se hizo la conexión
     print(f"Connected to MongoDB at: {MONGODB_URI} \n\t Database: {DB_NAME}")

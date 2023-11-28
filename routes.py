@@ -49,9 +49,12 @@ def get_airports(request: Request, country: str = "USA"):
 @router.get("/advertising-months/{airport_name}",
             response_description="Get optimal advertising months for a specific airport", response_model=list)
 def get_optimal_advertising_months(airport_name: str, request: Request):
-    # Obtén el número de viajes por mes para el aeropuerto dado
+    # Obtén el número de viajes por mes para el aeropuerto dado, sin que sean conexiones los viajes
     pipeline = [
-        {"$match": {"$or": [{"from_airport": airport_name}, {"to_airport": airport_name}]}},
+        {"$match": {
+            "$or": [{"from_airport": airport_name}, {"to_airport": airport_name}],
+            "connection": False
+        }},
         {"$group": {"_id": "$month", "total_travels": {"$sum": 1}}},
         {"$sort": {"total_travels": -1}}
     ]
